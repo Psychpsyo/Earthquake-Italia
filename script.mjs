@@ -1,3 +1,5 @@
+import { getSetting } from "./settings.mjs";
+
 // variables
 const italyCenter = [42.6384261, 12.674297];
 const sounds = {
@@ -114,7 +116,9 @@ function showQuake(quake, indicateNew) {
 	const earthquake = new Earthquake(id, lat, lon, magnitude, name, time);
 	if (indicateNew) {
 		earthquake.listEntry.classList.add("newQuake");
-		sounds.newQuake.play();
+		if (getSetting("playQuakeSound")) {
+			sounds.newQuake.play();
+		}
 	}
 }
 
