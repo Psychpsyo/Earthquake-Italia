@@ -12,10 +12,10 @@ const layer = L.tileLayer(
 const map = L.map(
 	"map",
 	{
+		center: italyCenter,
 		zoom: 6.4,
-		layers: [layer],
 		zoomSnap: 0,
-		center: italyCenter
+		layers: [layer]
 	}
 );
 map.setActiveArea("activeArea", true);
