@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>EARTHQUAKE ITALIA</title>
+		<title>Earthquake Italia</title>
 		<link rel="stylesheet" href="./style.css">
 		<link rel="stylesheet" href="./leaflet/leaflet.css">
 	</head>
 	<body>
-		<section id="mapHolder">
-			<div id="map"></div>
-			<div id="timeArea">
+		<div id="map"></div>
+		<section id="mapOverlay">
+			<div id="timeArea" class="blurPanel">
 				<span id="time"></span>
 				<span id="timezone"></span>
 			</div>
-			<div id="magnitudeLegend">
-				<div id="magnitudeHolder">
-					<span>0</span>
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
-					<span>6</span>
-					<span>7</span>
-					<span>8</span>
-					<span>9</span>
-					<span>10</span>
+			<div id="bottomOptions">
+				<div id="magnitudeLegend" class="blurPanel">
+					<div id="magnitudeHolder">
+						<span>0</span>
+						<span>1</span>
+						<span>2</span>
+						<span>3</span>
+						<span>4</span>
+						<span>5</span>
+						<span>6</span>
+						<span>7</span>
+						<span>8</span>
+						<span>9</span>
+						<span>10</span>
+					</div>
+					<div id="magnitudeGradient"></div>
 				</div>
-				<div id="magnitudeGradient"></div>
+				<button id="settingsButton" class="blurPanel" popovertarget="settingsPanel">Settings</button>
+				<button id="centerButton" class="blurPanel" >Center</button>
 			</div>
 		</section>
-		<section id="listArea">
+		<section id="listArea" class="blurPanel">
 			<ol id="quakeList">
 			</ol>
+		</section>
+
+		<section id="settingsPanel" popover>
+			<h2>SETTINGS</h2>
+			<ul id="settingsList">
+
+			</ul>
 		</section>
 
 		<script src="./leaflet/leaflet.js"></script>

@@ -1,4 +1,5 @@
 // variables
+const italyCenter = [42.6384261, 12.674297];
 const sounds = {
 	newQuake: new Audio("./audio/newQuake.wav")
 };
@@ -9,7 +10,7 @@ const layer = L.tileLayer(
 const map = L.map(
 	'map',
 	{
-		center: [42.6384261, 12.674297],
+		center: italyCenter,
 		zoom: 7,
 		layers: [layer]
 	}
@@ -55,6 +56,9 @@ function dateFormat(date) {
 magnitudeGradient.style.setProperty("background", `linear-gradient(90deg,${
 	[0,1,2,3,4,5,6,7,8,9,10].map(m => quakeColor(m)).join()
 })`);
+centerButton.addEventListener("click", function() {
+	map.setView(italyCenter, 7, {animate: true});
+});
 
 // actually fetching earthquakes
 class Earthquake {
@@ -84,7 +88,11 @@ class Earthquake {
 			map.setView([this.lat, this.lon], 8, {animate: true});
 			this.circle.openPopup();
 		});
-		quakeList.appendChild(this.listEntry);
+		if (quakeList.childElementCount > 0) {
+			quakeList.insertBefore(this.listEntry, quakeList.firstChild);
+		} else {
+			quakeList.appendChild(this.listEntry);
+		}
 
 		quakes.push(this);
 	}
@@ -99,7 +107,7 @@ function showQuake(quake, indicateNew) {
 	const lon = origin.querySelector("longitude").querySelector("value").textContent;
 	const magnitude = quake.querySelector("magnitude").querySelector("mag").querySelector("value").textContent;
 	const name = quake.querySelector("description").querySelector("text").textContent;
-	const time = new Date(origin.querySelector("time").querySelector("value").textContent);
+	const time = new Date(origin.querySelector("time").querySelector("value").textContent + "Z");
 
 	const earthquake = new Earthquake(id, lat, lon, magnitude, name, time);
 	if (indicateNew) {
@@ -112,7 +120,11 @@ async function fetchQuakes(indicateNew = true) {
 	const response = await fetch("https://webservices.ingv.it/fdsnws/event/1/query?minlat=30&maxlat=50&minlon=3&maxlon=18");
 	const text = await response.text();
 	const data = new window.DOMParser().parseFromString(text, "text/xml")
-	for (const quake of data.querySelectorAll("event")) {
+	for (const quake of Array.from(data.querySelectorAll("event")).sort((a, b) => {
+		const aTime = a.querySelector("origin").querySelector("time").querySelector("value");
+		const bTime = b.querySelector("origin").querySelector("time").querySelector("value");
+		return aTime > bTime? -1 : 1;
+	})) {
 		showQuake(quake, indicateNew);
 	}
 	const now = new Date();
