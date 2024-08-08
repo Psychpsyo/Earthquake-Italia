@@ -56,13 +56,11 @@ button.blurPanel {
 
 /* time display */
 #timeArea {
-	position: absolute;
-	background-color: rgba(0, 0, 0, 0.559);
-	color: white;
+	
 	font-size: 2em;
 	padding: .1em .25em;
 	white-space: nowrap;
-	backdrop-filter: blur(10px);
+	
 }
 #timezone {
 	opacity: .75;
@@ -72,8 +70,6 @@ button.blurPanel {
 #bottomOptions {
 	display: flex;
 	gap: 1rem;
-	position: absolute;
-	bottom: 1.5em
 }
 
 /* earthquake history */
