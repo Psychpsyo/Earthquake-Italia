@@ -28,11 +28,15 @@ body {
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.559);
 	color: white;
 	font-size: 2em;
 	padding: .1em .25em;
 	white-space: nowrap;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	backdrop-filter: blur(10px);
+	
 }
 #timezone {
 	opacity: .75;
@@ -119,7 +123,11 @@ body {
 	bottom: .5em;
 	left: 1em;
 	width: 20em;
-	color: black;
+	color: rgb(255, 255, 255);
+	padding: 15px;
+	background-color: rgba(0, 0, 0, 0.559);
+	backdrop-filter: blur(10px);
+	border-radius: 15px;
 }
 #magnitudeHolder {
 	display: flex;

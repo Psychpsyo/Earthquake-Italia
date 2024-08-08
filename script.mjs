@@ -10,8 +10,10 @@ const map = L.map(
 	'map',
 	{
 		center: [42.6384261, 12.674297],
-		zoom: 7,
-		layers: [layer]
+		zoom: 6.4,
+		layers: [layer],
+		zoomSnap: 0.1,
+		zoomDelta: 0.1
 	}
 );
 const quakes = [];
