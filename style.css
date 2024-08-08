@@ -7,7 +7,8 @@ body {
 	display: flex;
 	--background-color: #191919;
 	--text-color: white;
-	color: #1e1e1e;
+	--secondary-color:  #2d2d2d;
+	color: var(--text-color);
 }
 #mapHolder {
 	position: relative;
@@ -41,7 +42,6 @@ body {
 	width: 30em;
 	flex-shrink: 0;
 	overflow-y: scroll;
-	
 }
 #quakeList {
 	list-style-type: none;
@@ -51,12 +51,11 @@ body {
 /* history quake */
 #quakeList > li {
 	padding: .5em;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid var(--secondary-color);
 	display: flex;
 	gap: .5em;
 	cursor: pointer;
 	background-color: var(--background-color);
-	
 }
 .quakeTime{
 	color: var(--text-color);
