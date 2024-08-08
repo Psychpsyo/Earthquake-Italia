@@ -3,7 +3,7 @@
 	<head>
 		<title>Earthquake Italia</title>
 		<link rel="stylesheet" href="./style.css">
-		<link rel="stylesheet" href="./leaflet/leaflet.css">
+		<link rel="stylesheet" href="./libs/leaflet/leaflet.css">
 	</head>
 	<body>
 		<div id="map"></div>
@@ -45,7 +45,10 @@
 			</ul>
 		</section>
 
-		<script src="./leaflet/leaflet.js"></script>
+		<div class="activeArea"></div>
+
+		<script src="./libs/leaflet/leaflet.js"></script>
+		<script src="./libs/leaflet.activearea.js"></script>
 		<script src="./script.mjs" type="module"></script>
 	</body>
 	<template id="quakeListEntry">

@@ -4,17 +4,18 @@ const sounds = {
 	newQuake: new Audio("./audio/newQuake.wav")
 };
 const layer = L.tileLayer(
-	'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-	{attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}
+	"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+	{attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"}
 );
 const map = L.map(
-	'map',
+	"map",
 	{
 		center: italyCenter,
 		zoom: 7,
 		layers: [layer]
 	}
 );
+map.setActiveArea("activeArea", true);
 const quakes = [];
 
 // utility functions
