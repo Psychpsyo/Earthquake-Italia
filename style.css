@@ -6,8 +6,8 @@ body {
 	height: 100vh;
 	display: flex;
 	--background-color: #191919;
-	--text-color: white;
-	color: #1e1e1e;
+	--text-color: #1e1e1e;
+	color: var(--text-color);
 }
 #mapHolder {
 	position: relative;
@@ -41,7 +41,6 @@ body {
 	width: 30em;
 	flex-shrink: 0;
 	overflow-y: scroll;
-	
 }
 #quakeList {
 	list-style-type: none;
