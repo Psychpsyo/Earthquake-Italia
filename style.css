@@ -56,11 +56,9 @@ button.blurPanel {
 
 /* time display */
 #timeArea {
-	
 	font-size: 2em;
 	padding: .1em .25em;
 	white-space: nowrap;
-	
 }
 #timezone {
 	opacity: .75;
