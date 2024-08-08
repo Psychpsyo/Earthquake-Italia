@@ -1,0 +1,77 @@
+body {
+	margin: 0;
+	font-family: sans-serif;
+	height: 100vh;
+	display: flex;
+}
+
+#mapHolder {
+	position: relative;
+	height: 100%;
+	flex-basis: 100%;
+}
+
+#map {
+	height: 100%;
+	z-index: 0;
+}
+
+#timeArea {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: black;
+	color: white;
+	font-size: 2em;
+	padding: .1em .25em;
+}
+
+#timezone {
+	opacity: .75;
+	font-size: .75em;
+}
+
+#listArea {
+	width: 25vw;
+	flex-shrink: 0;
+	overflow-y: scroll;
+}
+#quakeList {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#quakeList > li {
+	padding: .5em;
+	border-bottom: 1px solid;
+	display: flex;
+	gap: .5em;
+}
+.quakeMagnitudeBox {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	aspect-ratio: 1;
+	width: 3em;
+	flex-shrink: 0;
+	border: 3px solid var(--color);
+}
+.quakeMagnitudeBox ::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--color);
+	opacity: .5;
+	z-index: -1;
+}
+.quakeMagnitude {
+	font-weight: bold;
+	font-size: 1.75em;
+}

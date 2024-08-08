@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EARTHQUAKE ITALIA</title>
+		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./leaflet/leaflet.css">
+	</head>
+	<body>
+		<section id="mapHolder">
+			<div id="map"></div>
+			<div id="timeArea">
+				<span id="time"></span>
+				<span id="timezone"></span>
+			</div>
+		</section>
+		<section id="listArea">
+			<ol id="quakeList">
+			</ol>
+		</section>
+
+		<script src="./leaflet/leaflet.js"></script>
+		<script src="./script.mjs" type="module"></script>
+	</body>
+	<template id="quakeListEntry">
+		<li>
+			<div class="quakeMagnitudeBox"><span class="quakeMagnitude"></span></div>
+			<span class="quakeName"></span>
+		</li>
+	</template>
+</html>
