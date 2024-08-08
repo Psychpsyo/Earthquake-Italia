@@ -61,7 +61,7 @@ magnitudeGradient.style.setProperty("background", `linear-gradient(90deg,${
 	[0,1,2,3,4,5,6,7,8,9,10].map(m => quakeColor(m)).join()
 })`);
 centerButton.addEventListener("click", function() {
-	map.setView(italyCenter, 7, {animate: true});
+	map.setView(italyCenter, 6.4, {animate: true});
 });
 
 // actually fetching earthquakes

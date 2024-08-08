@@ -181,4 +181,17 @@ button.blurPanel {
 }
 ::backdrop {
 	background-color: #000c;
+	backdrop-filter: blur(10px);
+}
+
+#settingsButton{
+	display: flex;
+	padding: 1rem;
+	align-self: center;
+}
+
+#centerButton{
+	display: flex;
+	padding: 1rem;
+	align-self: center;
 }
