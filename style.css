@@ -12,6 +12,7 @@ body {
 	--text-color: white;
 	--secondary-text-color: rgb(175, 175, 175);
 	--secondary-color:  #2d2d2d;
+	--list-width: 30rem;
 	background-color: var(--background-color);
 	color: var(--text-color);
 }
@@ -20,6 +21,14 @@ body {
 	width: 100%;
 	height: 100%;
 	z-index: 0;
+}
+.activeArea {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: calc(100vw - var(--list-width));
+	pointer-events: none;
 }
 #mapOverlay {
 	flex-basis: 100%;
@@ -73,7 +82,7 @@ button.blurPanel {
 
 /* earthquake history */
 #listArea {
-	width: 30em;
+	width: var(--list-width);
 	flex-shrink: 0;
 	z-index: 1;
 	margin: 1.5em;
