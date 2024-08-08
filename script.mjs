@@ -1,4 +1,5 @@
 import { getSetting } from "./settings.mjs";
+import { locale } from "./locale.mjs";
 
 // variables
 const italyCenter = [42.6384261, 12.674297];
@@ -63,6 +64,10 @@ magnitudeGradient.style.setProperty("background", `linear-gradient(90deg,${
 centerButton.addEventListener("click", function() {
 	map.setView(italyCenter, 6.4, {animate: true});
 });
+// translation
+settingsHeader.textContent = locale.settings.title;
+settingsButton.querySelector("img").alt = locale.general.settingsButton;
+centerButton.querySelector("img").alt = locale.general.centerButton;
 
 // actually fetching earthquakes
 class Earthquake {

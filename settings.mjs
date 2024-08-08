@@ -1,3 +1,22 @@
+import { locale } from "./locale.mjs";
+
+const settings = [
+	{
+		type: "dropdown",
+		id: "language",
+		options: [
+			"en",
+			"it"
+		],
+		default: "en"
+	},
+	{
+		type: "toggle",
+		id: "playQuakeSound",
+		default: true
+	}
+];
+
 export function getSetting(setting) {
 	const value = localStorage.getItem(setting.id);
 	if (value === null) return setting.default;
@@ -9,26 +28,43 @@ export function getSetting(setting) {
 	return value;
 }
 
-const settings = [
-	{
-		type: "toggle",
-		id: "playQuakeSound",
-		default: true
-	}
-];
-
 for (const setting of settings) {
 	const settingDiv = document.createElement("div");
-	settingDiv.appendChild(document.createTextNode(setting.id));
+	const label = document.createElement("label");
+	label.textContent = locale.settings.general[setting.id];
+	label.htmlFor = setting.id + "SettingInput";
+	settingDiv.appendChild(label);
 	switch(setting.type) {
 		case "toggle": {
 			const checkbox = document.createElement("input");
+			checkbox.id = setting.id + "SettingInput";
 			checkbox.type = "checkbox";
 			checkbox.checked = getSetting(setting);
 			checkbox.addEventListener("change", function() {
 				localStorage.setItem(setting.id, this.checked);
 			});
 			settingDiv.appendChild(checkbox);
+			break;
+		}
+		case "dropdown": {
+			const select = document.createElement("select");
+			select.addEventListener("change", function() {
+				localStorage.setItem(setting.id, this.value);
+				// should probably be handled differently but for now it's here
+				if (setting.id === "language") {
+					window.location.reload();
+				}
+			});
+			select.id = setting.id + "SettingInput";
+			for (const option of setting.options) {
+				const optionElem = document.createElement("option");
+				optionElem.value = option;
+				optionElem.textContent = locale.settings.general[setting.id + "_" + option];
+				select.appendChild(optionElem);
+			}
+			select.value = getSetting(setting);
+			settingDiv.appendChild(select);
+			break;
 		}
 	}
 	settingsList.appendChild(settingDiv);

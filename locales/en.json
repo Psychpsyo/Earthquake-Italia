@@ -1,0 +1,15 @@
+{
+	"general": {
+		"settingsButton": "Open Settings",
+		"centerButton": "Recenter Map"
+	},
+	"settings": {
+		"title": "Settings",
+		"general": {
+			"language": "Language",
+			"language_en": "English",
+			"language_it": "Italian",
+			"playQuakeSound": "Play Earthquake Sound"
+		}
+	}
+}

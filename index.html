@@ -3,6 +3,7 @@
 	<head>
 		<title>Earthquake Italia</title>
 		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./settings.css">
 		<link rel="stylesheet" href="./libs/leaflet/leaflet.css">
 	</head>
 	<body>
@@ -30,20 +31,19 @@
 					<div id="magnitudeGradient"></div>
 				</div>
 				<button id="settingsButton" class="blurPanel" popovertarget="settingsPanel">
-					<img src = "./icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Settings"/>
+					<img src="./icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Open Settings"/>
 				</button>
 				<button id="centerButton" class="blurPanel" >
-					<img src = "./icons/recenter_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Recenter"/>
+					<img src="./icons/recenter_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Recenter Map"/>
 				</button>
 			</div>
 		</section>
 		<section id="listArea" class="blurPanel">
-			<ol id="quakeList">
-			</ol>
+			<ol id="quakeList"></ol>
 		</section>
 
 		<section id="settingsPanel" popover>
-			<h2>SETTINGS</h2>
+			<h2 id="settingsHeader">Settings</h2>
 			<ul id="settingsList">
 
 			</ul>

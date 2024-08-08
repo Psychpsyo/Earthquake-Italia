@@ -82,6 +82,7 @@ button.blurPanel {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	border-radius: .75rem;
 	display: flex;
 	flex-direction: column;
 	gap: .5em;
@@ -184,14 +185,12 @@ button.blurPanel {
 	backdrop-filter: blur(10px);
 }
 
-#settingsButton{
-	display: flex;
-	padding: 1rem;
-	align-self: center;
+#bottomOptions > button {
+	height: 100%;
+	aspect-ratio: 1;
+	padding: .5rem;
 }
-
-#centerButton{
-	display: flex;
-	padding: 1rem;
-	align-self: center;
+#bottomOptions > button > img {
+	height: 100%;
+	aspect-ratio: 1;
 }
