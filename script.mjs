@@ -1,7 +1,7 @@
 import { getSetting } from "./settings.mjs";
 
 // variables
-const italyCenter = [41.6384261, 12.674297];
+const italyCenter = [42.6384261, 12.674297];
 const sounds = {
 	newQuake: new Audio("./audio/newQuake.wav")
 };
@@ -14,8 +14,7 @@ const map = L.map(
 	{
 		zoom: 6.4,
 		layers: [layer],
-		zoomSnap: 0.1,
-		zoomDelta: 0.1,
+		zoomSnap: 0,
 		center: italyCenter
 	}
 );
