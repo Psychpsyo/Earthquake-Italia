@@ -1,21 +1,25 @@
+
+/* general */
 body {
 	margin: 0;
 	font-family: sans-serif;
 	height: 100vh;
 	display: flex;
+	--background-color: #333;
+	--text-color: white;
+	color: var(--text-color);
 }
-
 #mapHolder {
 	position: relative;
 	height: 100%;
 	flex-basis: 100%;
 }
-
 #map {
 	height: 100%;
 	z-index: 0;
 }
 
+/* time display */
 #timeArea {
 	position: absolute;
 	top: 0;
@@ -25,15 +29,16 @@ body {
 	color: white;
 	font-size: 2em;
 	padding: .1em .25em;
+	white-space: nowrap;
 }
-
 #timezone {
 	opacity: .75;
 	font-size: .75em;
 }
 
+/* earthquake history */
 #listArea {
-	width: 25vw;
+	width: 30em;
 	flex-shrink: 0;
 	overflow-y: scroll;
 }
@@ -42,12 +47,14 @@ body {
 	margin: 0;
 	padding: 0;
 }
-
+/* history quake */
 #quakeList > li {
 	padding: .5em;
 	border-bottom: 1px solid;
 	display: flex;
 	gap: .5em;
+	cursor: pointer;
+	background-color: var(--background-color);
 }
 .quakeMagnitudeBox {
 	position: relative;
@@ -58,8 +65,9 @@ body {
 	width: 3em;
 	flex-shrink: 0;
 	border: 3px solid var(--color);
+	z-index: 1;
 }
-.quakeMagnitudeBox ::before {
+.quakeMagnitudeBox::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -74,4 +82,35 @@ body {
 .quakeMagnitude {
 	font-weight: bold;
 	font-size: 1.75em;
+}
+.quakeName {
+	font-size: 1.2em;
+}
+@keyframes flash {
+	from {filter: brightness(5)}
+	to {filter: brightness(1)}
+}
+.newQuake {
+	animation: flash .75s;
+}
+
+/* magnitude legend */
+#magnitudeLegend {
+	position: absolute;
+	bottom: .5em;
+	left: 1em;
+	width: 20em;
+	color: black;
+}
+#magnitudeHolder {
+	display: flex;
+	justify-content: space-between;
+}
+#magnitudeHolder > span {
+	width: 0;
+	display: flex;
+	justify-content: center;
+}
+#magnitudeGradient {
+	height: 1em;
 }

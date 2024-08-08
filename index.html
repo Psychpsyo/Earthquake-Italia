@@ -12,6 +12,22 @@
 				<span id="time"></span>
 				<span id="timezone"></span>
 			</div>
+			<div id="magnitudeLegend">
+				<div id="magnitudeHolder">
+					<span>0</span>
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+					<span>6</span>
+					<span>7</span>
+					<span>8</span>
+					<span>9</span>
+					<span>10</span>
+				</div>
+				<div id="magnitudeGradient"></div>
+			</div>
 		</section>
 		<section id="listArea">
 			<ol id="quakeList">
@@ -23,8 +39,11 @@
 	</body>
 	<template id="quakeListEntry">
 		<li>
-			<div class="quakeMagnitudeBox"><span class="quakeMagnitude"></span></div>
-			<span class="quakeName"></span>
+			<div class="quakeMagnitudeBox" title="Magnitude"><span class="quakeMagnitude"></span></div>
+			<div>
+				<span class="quakeName"></span><br>
+				<span class="quakeTime"></span>
+			</div>
 		</li>
 	</template>
 </html>

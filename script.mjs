@@ -1,8 +1,11 @@
+// variables
+const sounds = {
+	newQuake: new Audio("./audio/newQuake.wav")
+};
 const layer = L.tileLayer(
 	'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	{attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}
 );
-
 const map = L.map(
 	'map',
 	{
@@ -11,8 +14,9 @@ const map = L.map(
 		layers: [layer]
 	}
 );
-
 const quakes = [];
+
+// utility functions
 
 // from https://gist.github.com/mjackson/5311256
 function hsvToRgb(h, s, v) {
@@ -35,6 +39,9 @@ function hsvToRgb(h, s, v) {
 
 	return [ r * 255, g * 255, b * 255 ];
 }
+function quakeColor(magnitude) {
+	return "#" + hsvToRgb(.66 - (magnitude / 10 * .66), 1, 1).map(v => Math.floor(v).toString(16).padStart(2, "0")).join("");
+}
 function dateFormat(date) {
 	return date.getFullYear() + "-" +
 	       (date.getMonth() + 1).toString().padStart(2, "0") + "-" +
@@ -44,36 +51,44 @@ function dateFormat(date) {
 		   date.getSeconds().toString().padStart(2, "0");
 }
 
+// set up page
+magnitudeGradient.style.setProperty("background", `linear-gradient(90deg,${
+	[0,1,2,3,4,5,6,7,8,9,10].map(m => quakeColor(m)).join()
+})`);
+
+// actually fetching earthquakes
 class Earthquake {
-	constructor(id, lat, lon, magnitude, name) {
+	constructor(id, lat, lon, magnitude, name, time) {
 		this.id = id;
 		this.lat = lat;
 		this.lon = lon;
 		this.magnitude = magnitude;
 		this.name = name;
+		this.time = time;
 		this.circle = L.circle(
 			[lat, lon],
 			{
 				radius: 10000 * magnitude,
-				color: this.color
+				color: quakeColor(this.magnitude)
 			}
 		);
 		this.circle.addTo(map);
-		this.listEntry = quakeListEntry.content.cloneNode(true);
-		this.listEntry.querySelector("li").style.setProperty("--color", this.color);
+		const template = quakeListEntry.content.cloneNode(true);
+		this.listEntry = template.querySelector("li");
+		this.listEntry.style.setProperty("--color", quakeColor(this.magnitude));
 		this.listEntry.querySelector(".quakeName").textContent = name;
+		this.listEntry.querySelector(".quakeTime").textContent = dateFormat(time);
 		this.listEntry.querySelector(".quakeMagnitude").textContent = magnitude;
+		this.listEntry.addEventListener("click", () => {
+			map.setView([this.lat, this.lon], 8, {animate: true});
+		});
 		quakeList.appendChild(this.listEntry);
 
 		quakes.push(this);
 	}
-
-	get color() {
-		return "#" + hsvToRgb(.66 - (this.magnitude / 10 * .66), 1, 1).map(v => Math.floor(v).toString(16).padStart(2, "0")).join("");
-	}
 }
 
-function showQuake(quake) {
+function showQuake(quake, indicateNew) {
 	if(quake.querySelector("type").textContent !== "earthquake") return;
 	const id = quake.getAttribute("publicID").match(/(?<=eventId=)\d*/)[0];
 	if (quakes.find(q => q.id === id)) return;
@@ -82,15 +97,21 @@ function showQuake(quake) {
 	const lon = origin.querySelector("longitude").querySelector("value").textContent;
 	const magnitude = quake.querySelector("magnitude").querySelector("mag").querySelector("value").textContent;
 	const name = quake.querySelector("description").querySelector("text").textContent;
-	new Earthquake(id, lat, lon, magnitude, name);
+	const time = new Date(origin.querySelector("time").querySelector("value").textContent);
+
+	const earthquake = new Earthquake(id, lat, lon, magnitude, name, time);
+	if (indicateNew) {
+		earthquake.listEntry.classList.add("newQuake");
+		sounds.newQuake.play();
+	}
 }
 
-async function fetchQuakes() {
+async function fetchQuakes(indicateNew = true) {
 	const response = await fetch("https://webservices.ingv.it/fdsnws/event/1/query?minlat=30&maxlat=50&minlon=3&maxlon=18");
 	const text = await response.text();
 	const data = new window.DOMParser().parseFromString(text, "text/xml")
 	for (const quake of data.querySelectorAll("event")) {
-		showQuake(quake);
+		showQuake(quake, indicateNew);
 	}
 	const now = new Date();
 	time.textContent = dateFormat(now);
@@ -100,4 +121,4 @@ async function fetchQuakes() {
 	setTimeout(fetchQuakes, 1000);
 }
 
-fetchQuakes();
+fetchQuakes(false);
