@@ -13,7 +13,7 @@ const map = L.map(
 		zoom: 6.4,
 		layers: [layer],
 		zoomSnap: 0.1,
-		zoomDelta: 0.1
+		zoomDelta: 0.1,
 		center: italyCenter
 	}
 );
