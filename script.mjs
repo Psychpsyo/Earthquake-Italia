@@ -73,6 +73,7 @@ class Earthquake {
 			}
 		);
 		this.circle.addTo(map);
+		this.circle.bindPopup(this.name, {autoPan: false});
 		const template = quakeListEntry.content.cloneNode(true);
 		this.listEntry = template.querySelector("li");
 		this.listEntry.style.setProperty("--color", quakeColor(this.magnitude));
@@ -81,6 +82,7 @@ class Earthquake {
 		this.listEntry.querySelector(".quakeMagnitude").textContent = magnitude;
 		this.listEntry.addEventListener("click", () => {
 			map.setView([this.lat, this.lon], 8, {animate: true});
+			this.circle.openPopup();
 		});
 		quakeList.appendChild(this.listEntry);
 

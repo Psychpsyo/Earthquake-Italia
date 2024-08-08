@@ -8,6 +8,7 @@ body {
 	--background-color: #191919;
 	--text-color: white;
 	--secondary-color:  #2d2d2d;
+	background-color: var(--background-color);
 	color: var(--text-color);
 }
 #mapHolder {
@@ -39,7 +40,7 @@ body {
 
 /* earthquake history */
 #listArea {
-	width: 30em;
+	width: 40em;
 	flex-shrink: 0;
 	overflow-y: scroll;
 }
@@ -57,18 +58,24 @@ body {
 	cursor: pointer;
 	background-color: var(--background-color);
 }
-.quakeTime{
-	color: var(--text-color);
+#quakeList > li:not(:last-child) {
+	border-bottom: 1px solid;
+}
+#quakeList > :first-child {
+	font-size: 2em;
+}
+#quakeList > :first-child .quakeName {
+	font-weight: bold;
 }
 .quakeMagnitudeBox {
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	aspect-ratio: 1;
 	width: 3em;
+	height: 3em;
 	flex-shrink: 0;
-	border: 3px solid var(--color);
+	border: .2em solid var(--color);
 	z-index: 1;
 	border-radius: 5px;
 }
