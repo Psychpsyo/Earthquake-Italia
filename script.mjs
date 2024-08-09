@@ -132,9 +132,9 @@ async function fetchQuakes(indicateNew = true) {
 	const text = await response.text();
 	const data = new window.DOMParser().parseFromString(text, "text/xml")
 	for (const quake of Array.from(data.querySelectorAll("event")).sort((a, b) => {
-		const aTime = a.querySelector("origin").querySelector("time").querySelector("value");
-		const bTime = b.querySelector("origin").querySelector("time").querySelector("value");
-		return aTime > bTime? -1 : 1;
+		const aTime = a.querySelector("origin").querySelector("time").querySelector("value").textContent;
+		const bTime = b.querySelector("origin").querySelector("time").querySelector("value").textContent;
+		return aTime > bTime? 1 : -1;
 	})) {
 		showQuake(quake, indicateNew);
 	}
