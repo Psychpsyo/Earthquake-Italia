@@ -7,6 +7,7 @@
 		"title": "Impostazioni",
 		"general": {
 			"language": "Lingua",
+			"language_de": "German (Deutsch)",
 			"language_en": "Inglese (English)",
 			"language_it": "Italiano",
 			"playQuakeSound": "Riproduci suoni per Terremoti"

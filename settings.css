@@ -1,3 +1,16 @@
+
+#settingsPanel {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border-radius: 10px;
+	border: 2px solid var(--text-color);
+	padding: 10px;
+}
+::backdrop {
+	background-color: #000c;
+	backdrop-filter: blur(10px);
+}
+
 #settingsList {
 	padding: 0;
 	margin: none;

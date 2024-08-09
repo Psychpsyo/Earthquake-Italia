@@ -1,0 +1,16 @@
+{
+	"general": {
+		"settingsButton": "Einstellungen öffnen",
+		"centerButton": "Karte zentrieren"
+	},
+	"settings": {
+		"title": "Einstellungen",
+		"general": {
+			"language": "Sprache",
+			"language_de": "Deutsch",
+			"language_en": "Englisch (English)",
+			"language_it": "Italienisch (Italiano)",
+			"playQuakeSound": "Erdbeben-Geräusch abspielen"
+		}
+	}
+}

@@ -5,8 +5,9 @@ const settings = [
 		type: "dropdown",
 		id: "language",
 		options: [
+			"it",
 			"en",
-			"it"
+			"de",
 		],
 		default: "en"
 	},
@@ -60,7 +61,18 @@ for (const setting of settings) {
 				const optionElem = document.createElement("option");
 				optionElem.value = option;
 				optionElem.textContent = locale.settings.general[setting.id + "_" + option];
-				select.appendChild(optionElem);
+				let insertBeforeElem = null;
+				for (const elem of select.children) {
+					if (elem.textContent > optionElem.textContent) {
+						insertBeforeElem = elem;
+						break;
+					}
+				}
+				if (insertBeforeElem) {
+					select.insertBefore(optionElem, insertBeforeElem);
+				} else {
+					select.appendChild(optionElem);
+				}
 			}
 			select.value = getSetting(setting);
 			settingDiv.appendChild(select);

@@ -7,8 +7,9 @@
 		"title": "Settings",
 		"general": {
 			"language": "Language",
+			"language_de": "German (Deutsch)",
 			"language_en": "English",
-			"language_it": "Italian",
+			"language_it": "Italian (Italiano)",
 			"playQuakeSound": "Play Earthquake Sound"
 		}
 	}
