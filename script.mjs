@@ -2,7 +2,7 @@ import { getSetting } from "./settings.mjs";
 import { locale } from "./locale.mjs";
 
 // variables
-const italyCenter = [42.6384261, 12.674297];
+const italyCenter = [42, 13];
 const sounds = {
 	newQuake: new Audio("./audio/newQuake.wav")
 };

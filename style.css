@@ -7,12 +7,12 @@ body {
 	margin: 0;
 	font-family: sans-serif;
 	height: 100vh;
-	display: flex;
 	--background-color: #191919;
 	--text-color: white;
 	--secondary-text-color: rgb(175, 175, 175);
 	--secondary-color:  #2d2d2d;
 	--list-width: 30rem;
+	--overlay-padding: 1.5em;
 	background-color: var(--background-color);
 	color: var(--text-color);
 }
@@ -27,13 +27,19 @@ body {
 	top: 0;
 	left: 0;
 	height: 100vh;
-	width: calc(100vw - var(--list-width));
+	width: calc(100vw - var(--list-width) - var(--overlay-padding));
 	pointer-events: none;
+}
+#overlays {
+	padding: var(--overlay-padding);
+	display: flex;
+	gap: var(--overlay-padding);
+	height: 100%;
+	z-index: 1;
 }
 #mapOverlay {
 	flex-basis: 100%;
 	pointer-events: none;
-	margin: 1.5em;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -74,8 +80,6 @@ button.blurPanel {
 #listArea {
 	width: var(--list-width);
 	flex-shrink: 0;
-	z-index: 1;
-	margin: 1.5em;
 	padding: .5rem;
 }
 #quakeList {
