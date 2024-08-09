@@ -1,15 +1,15 @@
 {
 	"general": {
-		"settingsButton": "Open Settings",
-		"centerButton": "Recenter Map"
+		"settingsButton": "Apri Impostazioni",
+		"centerButton": "Ricentra Mappa"
 	},
 	"settings": {
-		"title": "Settings",
+		"title": "Impostazioni",
 		"general": {
-			"language": "Language",
-			"language_en": "English",
-			"language_it": "Italian",
-			"playQuakeSound": "Play Earthquake Sound"
+			"language": "Lingua",
+			"language_en": "Inglese (English)",
+			"language_it": "Italiano",
+			"playQuakeSound": "Riproduci suoni per Terremoti"
 		}
 	}
 }

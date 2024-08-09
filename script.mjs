@@ -134,7 +134,7 @@ async function fetchQuakes(indicateNew = true) {
 	for (const quake of Array.from(data.querySelectorAll("event")).sort((a, b) => {
 		const aTime = a.querySelector("origin").querySelector("time").querySelector("value");
 		const bTime = b.querySelector("origin").querySelector("time").querySelector("value");
-		return aTime > bTime? -1 : 1;
+		return aTime > bTime? 1 : -1;
 	})) {
 		showQuake(quake, indicateNew);
 	}
